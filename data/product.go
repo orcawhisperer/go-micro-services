@@ -19,6 +19,7 @@ type Product struct {
 	DeletedOn   string  `json:"-"`
 }
 
+//Products type...
 type Products []*Product
 
 //ToJSON used to convert data from product struct to json
@@ -76,7 +77,7 @@ func findProduct(id int) (int, error) {
 }
 
 var productList = []*Product{
-	&Product{
+	{
 		ID:          1,
 		Name:        "Latte",
 		Description: "Frothy Milky Coffee",
@@ -85,7 +86,7 @@ var productList = []*Product{
 		CreatedOn:   time.Now().UTC().String(),
 		UpdatedOn:   time.Now().UTC().String(),
 	},
-	&Product{
+	{
 		ID:          2,
 		Name:        "Esspresso",
 		Description: "Frothy Milky Coffee",
