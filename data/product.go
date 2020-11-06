@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-//Product ...
+//Product Struct
 type Product struct {
 	ID          int     `json:"id"`
 	Name        string  `json:"name"`
@@ -21,20 +21,24 @@ type Product struct {
 
 type Products []*Product
 
+//ToJSON used to convert data from product struct to json
 func (p *Products) ToJSON(w io.Writer) error {
 	e := json.NewEncoder(w)
 	return e.Encode(p)
 }
 
+//FromJSON used to convert data from request to product struct
 func (p *Product) FromJSON(r io.Reader) error {
 	e := json.NewDecoder(r)
 	return e.Decode(p)
 }
 
+//GetProduct returns all the product
 func GetProduct() Products {
 	return productList
 }
 
+//AddProduct add new product
 func AddProduct(p *Product) {
 	p.ID = getNextID()
 	p.CreatedOn = time.Now().UTC().String()
@@ -42,6 +46,7 @@ func AddProduct(p *Product) {
 	productList = append(productList, p)
 }
 
+//UpdateProduct updates the existing product
 func UpdateProduct(id int, p *Product) error {
 	pos, err := findProduct(id)
 	if err != nil {
@@ -58,6 +63,7 @@ func getNextID() int {
 	return lp.ID + 1
 }
 
+//ErrProductNotFound ...
 var ErrProductNotFound = fmt.Errorf("Product not found")
 
 func findProduct(id int) (int, error) {
