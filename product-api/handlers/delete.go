@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/iamvasanth07/go-microservices/product-api/data"
+	"github.com/iamvasanth07/go-micro-services/product-api/data"
 )
 
 // swagger:route DELETE /products/{id} products deleteProduct

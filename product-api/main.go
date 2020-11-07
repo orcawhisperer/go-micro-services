@@ -10,6 +10,9 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/gorilla/mux"
+	"github.com/iamvasanth07/go-micro-services/product-api/data"
+	"github.com/iamvasanth07/go-micro-services/product-api/handlers"
+	"github.com/nicholasjackson/env"
 )
 
 var bindAddress = env.String("BIND_ADDRESS", false, ":9090", "Bind address for the server")
