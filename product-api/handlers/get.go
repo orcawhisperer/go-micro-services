@@ -15,6 +15,8 @@ import (
 func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
 	p.l.Println("[DEBUG] get all records")
 
+	rw.Header().Add("Content-Type", "application/json")
+
 	prods := data.GetProducts()
 
 	err := data.ToJSON(prods, rw)
@@ -24,7 +26,7 @@ func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// swagger:route GET /products/{id} products listSingle
+// swagger:route GET /products/{id} products listSingleProduct
 // Return a list of products from the database
 // responses:
 //	200: productResponse
@@ -35,6 +37,8 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 	id := getProductID(r)
 
 	p.l.Println("[DEBUG] get record id", id)
+
+	rw.Header().Add("Content-Type", "application/json")
 
 	prod, err := data.GetProductByID(id)
 

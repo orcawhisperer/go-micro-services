@@ -8,4 +8,4 @@ swagger:
 	@echo You can install the swagger CLI with: go get -u github.com/go-swagger/go-swagger/cmd/swagger
 	@echo ....
 
-	swagger generate spec -o ./swagger.yaml --scan-models
+	which sawgger || swagger generate spec -o ./swagger.yaml --scan-models
