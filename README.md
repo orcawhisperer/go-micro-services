@@ -1,3 +1,1 @@
-# go-micro-services
-
-Building a go micro services application with grpc, restful concepts, etc...
+#  Building Microservices in Go
